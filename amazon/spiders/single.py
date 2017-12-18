@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from random import random
+import random
 
 import scrapy
 import MySQLdb
