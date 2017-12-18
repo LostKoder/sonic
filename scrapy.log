@@ -1,0 +1,113 @@
+
+2017-12-18 21:58:13 [scrapy.utils.log] INFO: Scrapy 1.4.0 started (bot: amazon)
+2017-12-18 21:58:13 [scrapy.utils.log] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'amazon.spiders', 'ROBOTSTXT_OBEY': True, 'LOG_LEVEL': 'INFO', 'SPIDER_MODULES': ['amazon.spiders'], 'BOT_NAME': 'amazon', 'LOG_FILE': 'scrapy.log'}
+2017-12-18 21:58:14 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2017-12-18 21:58:14 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2017-12-18 21:58:14 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2017-12-18 21:58:14 [scrapy.middleware] INFO: Enabled item pipelines:
+['amazon.pipelines.AmazonPipeline']
+2017-12-18 21:58:14 [scrapy.core.engine] INFO: Spider opened
+2017-12-18 21:58:14 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2017-12-18 21:59:14 [scrapy.extensions.logstats] INFO: Crawled 355 pages (at 355 pages/min), scraped 166 items (at 166 items/min)
+2017-12-18 22:00:07 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <404 https://www.amazon.com/dp/B000APBM5W>: HTTP status code is not handled or not allowed
+2017-12-18 22:00:14 [scrapy.extensions.logstats] INFO: Crawled 643 pages (at 288 pages/min), scraped 311 items (at 145 items/min)
+2017-12-18 22:01:14 [scrapy.extensions.logstats] INFO: Crawled 928 pages (at 285 pages/min), scraped 461 items (at 150 items/min)
+2017-12-18 22:02:14 [scrapy.extensions.logstats] INFO: Crawled 1181 pages (at 253 pages/min), scraped 594 items (at 133 items/min)
+2017-12-18 22:03:14 [scrapy.extensions.logstats] INFO: Crawled 1493 pages (at 312 pages/min), scraped 748 items (at 154 items/min)
+2017-12-18 22:04:14 [scrapy.extensions.logstats] INFO: Crawled 1792 pages (at 299 pages/min), scraped 890 items (at 142 items/min)
+2017-12-18 22:05:14 [scrapy.extensions.logstats] INFO: Crawled 2057 pages (at 265 pages/min), scraped 1037 items (at 147 items/min)
+2017-12-18 22:06:14 [scrapy.extensions.logstats] INFO: Crawled 2310 pages (at 253 pages/min), scraped 1177 items (at 140 items/min)
+2017-12-18 22:07:14 [scrapy.extensions.logstats] INFO: Crawled 2562 pages (at 252 pages/min), scraped 1319 items (at 142 items/min)
+2017-12-18 22:08:14 [scrapy.extensions.logstats] INFO: Crawled 2825 pages (at 263 pages/min), scraped 1457 items (at 138 items/min)
+2017-12-18 22:09:14 [scrapy.extensions.logstats] INFO: Crawled 3078 pages (at 253 pages/min), scraped 1601 items (at 144 items/min)
+2017-12-18 22:10:14 [scrapy.extensions.logstats] INFO: Crawled 3335 pages (at 257 pages/min), scraped 1742 items (at 141 items/min)
+2017-12-18 22:11:14 [scrapy.extensions.logstats] INFO: Crawled 3653 pages (at 318 pages/min), scraped 1883 items (at 141 items/min)
+2017-12-18 22:12:14 [scrapy.extensions.logstats] INFO: Crawled 3897 pages (at 244 pages/min), scraped 2020 items (at 137 items/min)
+2017-12-18 22:13:14 [scrapy.extensions.logstats] INFO: Crawled 4164 pages (at 267 pages/min), scraped 2162 items (at 142 items/min)
+2017-12-18 22:13:53 [scrapy.crawler] INFO: Received SIGINT, shutting down gracefully. Send again to force 
+2017-12-18 22:13:53 [scrapy.core.engine] INFO: Closing spider (shutdown)
+2017-12-18 22:13:59 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 3169446,
+ 'downloader/request_count': 4354,
+ 'downloader/request_method_count/GET': 4354,
+ 'downloader/response_bytes': 516504163,
+ 'downloader/response_count': 4354,
+ 'downloader/response_status_count/200': 4352,
+ 'downloader/response_status_count/301': 1,
+ 'downloader/response_status_count/404': 1,
+ 'finish_reason': 'shutdown',
+ 'finish_time': datetime.datetime(2017, 12, 18, 18, 43, 59, 369219),
+ 'httperror/response_ignored_count': 1,
+ 'httperror/response_ignored_status_count/404': 1,
+ 'item_scraped_count': 2265,
+ 'log_count/INFO': 24,
+ 'memusage/max': 355856384,
+ 'memusage/startup': 54292480,
+ 'response_received_count': 4353,
+ 'scheduler/dequeued': 4353,
+ 'scheduler/dequeued/memory': 4353,
+ 'scheduler/enqueued': 4353,
+ 'scheduler/enqueued/memory': 4353,
+ 'start_time': datetime.datetime(2017, 12, 18, 18, 28, 14, 37247)}
+2017-12-18 22:13:59 [scrapy.core.engine] INFO: Spider closed (shutdown)
+2017-12-18 22:14:16 [scrapy.utils.log] INFO: Scrapy 1.4.0 started (bot: amazon)
+2017-12-18 22:14:16 [scrapy.utils.log] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'amazon.spiders', 'ROBOTSTXT_OBEY': True, 'LOG_LEVEL': 'INFO', 'SPIDER_MODULES': ['amazon.spiders'], 'BOT_NAME': 'amazon', 'LOG_FILE': 'scrapy.log'}
+2017-12-18 22:14:16 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2017-12-18 22:14:16 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2017-12-18 22:14:16 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2017-12-18 22:14:16 [scrapy.middleware] INFO: Enabled item pipelines:
+['amazon.pipelines.AmazonPipeline']
+2017-12-18 22:14:16 [scrapy.core.engine] INFO: Spider opened
+2017-12-18 22:14:16 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2017-12-18 22:14:55 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <404 https://www.amazon.com/dp/B000APBM5W>: HTTP status code is not handled or not allowed
+2017-12-18 22:15:16 [scrapy.extensions.logstats] INFO: Crawled 295 pages (at 295 pages/min), scraped 154 items (at 154 items/min)
+2017-12-18 22:16:16 [scrapy.extensions.logstats] INFO: Crawled 564 pages (at 269 pages/min), scraped 300 items (at 146 items/min)
+2017-12-18 22:17:16 [scrapy.extensions.logstats] INFO: Crawled 906 pages (at 342 pages/min), scraped 445 items (at 145 items/min)
+2017-12-18 22:18:16 [scrapy.extensions.logstats] INFO: Crawled 1165 pages (at 259 pages/min), scraped 573 items (at 128 items/min)
+2017-12-18 22:19:16 [scrapy.extensions.logstats] INFO: Crawled 1503 pages (at 338 pages/min), scraped 735 items (at 162 items/min)
+2017-12-18 22:20:16 [scrapy.extensions.logstats] INFO: Crawled 1800 pages (at 297 pages/min), scraped 884 items (at 149 items/min)
+2017-12-18 22:21:16 [scrapy.extensions.logstats] INFO: Crawled 2079 pages (at 279 pages/min), scraped 1040 items (at 156 items/min)
+2017-12-18 22:22:16 [scrapy.extensions.logstats] INFO: Crawled 2352 pages (at 273 pages/min), scraped 1185 items (at 145 items/min)
+2017-12-18 22:23:16 [scrapy.extensions.logstats] INFO: Crawled 2702 pages (at 350 pages/min), scraped 1350 items (at 165 items/min)
