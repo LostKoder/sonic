@@ -43,10 +43,11 @@ class SingleSpider(scrapy.Spider):
 
         for row in cursor:
             url = "https://www.amazon.com/dp/%s" % row
+            proxy = random.choice(self.proxy_pool)
             yield Request(url, dont_filter=True, meta={"id": row[0]}, headers={
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 'Accept-Language': 'en-US,en;q=0.8',
                 'Cache-Control': 'no-cache',
                 'Connection': 'keep-alive',
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.69 Safari/537.36'
-            })
+            }, proxy=proxy)
