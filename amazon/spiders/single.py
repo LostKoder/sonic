@@ -39,12 +39,11 @@ class SingleSpider(scrapy.Spider):
     def start_requests(self):
         # execute SQL query using execute() method.
         cursor = Database.cursor()
-        cursor.execute("SELECT code FROM sonic where crawled = 0")
+        cursor.execute("select sonic.code from sonic, products where products.code = sonic.code and category not in ('shoes') and sonic.crawled = 0;")
 
         for row in cursor:
             url = "https://www.amazon.com/dp/%s" % row
-            proxy = random.choice(self.proxy_pool)
-            yield Request(url, dont_filter=True, meta={"id": row[0], "proxy":proxy}, headers={
+            yield Request(url, dont_filter=True, meta={"id": row[0]}, headers={
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 'Accept-Language': 'en-US,en;q=0.8',
                 'Cache-Control': 'no-cache',

@@ -15,6 +15,6 @@ class AmazonPipeline(object):
         cursor = Database.cursor()
         with open('data/'+item['code'] + '.html', 'w+') as my_file:
             my_file.write(item['html'])
-        # cursor.execute("UPDATE sonic set crawled=1 where code=%s", [item['code']])
-        # cursor.connection.commit()
+        cursor.execute("UPDATE sonic set crawled=1 where code=%s", [item['code']])
+        cursor.connection.commit()
         return item

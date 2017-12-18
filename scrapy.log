@@ -111,3 +111,6 @@
 2017-12-18 22:21:16 [scrapy.extensions.logstats] INFO: Crawled 2079 pages (at 279 pages/min), scraped 1040 items (at 156 items/min)
 2017-12-18 22:22:16 [scrapy.extensions.logstats] INFO: Crawled 2352 pages (at 273 pages/min), scraped 1185 items (at 145 items/min)
 2017-12-18 22:23:16 [scrapy.extensions.logstats] INFO: Crawled 2702 pages (at 350 pages/min), scraped 1350 items (at 165 items/min)
+2017-12-18 22:24:16 [scrapy.extensions.logstats] INFO: Crawled 2939 pages (at 237 pages/min), scraped 1487 items (at 137 items/min)
+2017-12-18 22:25:16 [scrapy.extensions.logstats] INFO: Crawled 3264 pages (at 325 pages/min), scraped 1648 items (at 161 items/min)
+2017-12-18 22:26:16 [scrapy.extensions.logstats] INFO: Crawled 3582 pages (at 318 pages/min), scraped 1812 items (at 164 items/min)
