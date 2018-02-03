@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-LOG_FILE = 'scrapy.log'
+# LOG_FILE = 'scrapy.log'
 LOG_LEVEL = 'INFO'
 # Scrapy settings for amazon project
 #
@@ -66,7 +66,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'amazon.pipelines.AmazonPipeline': 300,
+    'amazon.pipelines.MySQLPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

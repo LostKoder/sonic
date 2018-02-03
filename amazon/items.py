@@ -8,7 +8,12 @@
 import scrapy
 
 
-class AmazonItem(scrapy.Item):
+class Product(scrapy.Item):
     # define the fields for your item here like:
-    html = scrapy.Field()
     code = scrapy.Field()
+    rate = scrapy.Field()
+    title = scrapy.Field()
+    discount_percent = scrapy.Field()
+    discount_price = scrapy.Field()
+    original_price = scrapy.Field()
+    category_id = scrapy.Field()
