@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 import re
-
-import scrapy
-from scrapy import Request, Selector
-
+import datetime
+from scrapy import Request, Selector, Spider
 from amazon.libraries import Database
 from amazon.items import Product
 
 
-class SingleSpider(scrapy.Spider):
+class SingleSpider(Spider):
     name = 'single'
     allowed_domains = ['amazon.com']
     start_urls = ['https://www.amazon.com/']
@@ -28,7 +26,8 @@ class SingleSpider(scrapy.Spider):
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36",
         }
 
-    def single_parse(self, response):
+    @staticmethod
+    def single_parse(response):
         search = re.search('(?:dp|o|gp|gp/product|-)/(B[0-9]{2}[0-9A-Z]{7}|[0-9]{9}(?:X|[0-9]))', response.url)
         selector = Selector(response)
         has_discount = len(selector.css('#regularprice_savings').extract()) > 0
@@ -40,11 +39,17 @@ class SingleSpider(scrapy.Spider):
             else:
                 product['rate'] = '3'
             product['title'] = selector.css('#productTitle::text').extract()[0].strip()
-            product['title'] = u' '.join((product['title'])).encode('utf-8').strip()
+            product['title'] = u' '.join((product['title'], '')).encode('utf-8').strip()
             product['discount_percent'] = re.sub('(^.*?\()|\)|%', '', selector.css("#regularprice_savings .a-color-price::text").extract()[0])
             product['discount_price'] = re.sub('\(.*?\)|\$|\s|,', '', selector.css("#regularprice_savings .a-color-price::text").extract()[0])
             product['original_price'] = selector.css("#price .a-text-strike::text").extract()[0].replace('$', '').replace(',', '')
             product['category_id'] = int(response.meta['category_id'])
+            product['is_prime'] = int(response.meta['is_prime'])
+            reviews = selector.css("#acrCustomerReviewText::text").extract()
+            if len(reviews) > 0:
+                product['reviews'] = int(re.sub('( customer reviews?)|(,)', '', reviews[0]))
+            else:
+                product['reviews'] = 0
             return product
         return None
 
@@ -58,10 +63,13 @@ class SingleSpider(scrapy.Spider):
                 if len(single_item.xpath("@data-asin").extract()) > 0:
                     url = 'https://www.amazon.com/dp/' + single_item.xpath("@data-asin").extract()[0] + '/?psc=1'
                     yield Request(
-                        url=url,
+                        url=self.prepare_url_to_request(url),
                         callback=self.single_parse,
                         headers=self.headers,
-                        meta={"category_id": response.meta['category_id']}
+                        meta={
+                            "category_id": response.meta['category_id'],
+                            "is_prime": len(single_item.css('[aria-label=Prime]').extract()) > 0
+                        }
                     )
                 else:
                     print single_item.extract()
@@ -69,10 +77,12 @@ class SingleSpider(scrapy.Spider):
         #  Request next page if exists
         next_page = selector.css('a#pagnNextLink')
         if len(next_page.extract()) > 0:
+            url = response.urljoin(next_page.xpath("@href").extract()[0])
             yield Request(
-                url=response.urljoin(next_page.xpath("@href").extract()[0]),
+                url=self.prepare_url_to_request(url),
                 callback=self.parse,
-                headers=self.headers, meta={"category_id": response.meta['category_id']}
+                headers=self.headers,
+                meta={"category_id": response.meta['category_id']}
             )
 
     def start_requests(self):
@@ -84,9 +94,33 @@ class SingleSpider(scrapy.Spider):
             category_id = row[0]
             url = row[1]
             yield Request(
-                url=url,
+                url=self.prepare_url_to_request(url),
                 dont_filter=True,
                 meta={"category_id": category_id},
                 callback=self.parse,
                 headers=self.headers
             )
+
+    @staticmethod
+    def prepare_url_to_request(url):
+        """
+    Replace amazon url with nodes url in rotated fashion.
+        :param url: string
+        """
+        return url
+        # get server url from database
+        cursor = Database.cursor()
+        cursor.execute("SELECT url, id FROM servers ORDER BY used_at ASC LIMIT 1")
+        row = cursor.fetchone()
+        server_url = row[0]
+        identity = row[1]
+        # update server usage time in database
+        cursor.execute(
+            "UPDATE servers SET used_at='" +
+            datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S') +
+            "' where id = '" + str(identity) + "'"
+        )
+        Database.get_connection().commit()
+        return re.sub('^.*?\.com', server_url, url)
+
+# todo: match apit1...3 servers to return page html

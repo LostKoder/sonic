@@ -17,3 +17,5 @@ class Product(scrapy.Item):
     discount_price = scrapy.Field()
     original_price = scrapy.Field()
     category_id = scrapy.Field()
+    reviews = scrapy.Field()
+    is_prime = scrapy.Field()
